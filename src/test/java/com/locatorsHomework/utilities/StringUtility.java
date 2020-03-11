@@ -34,4 +34,16 @@ public class StringUtility {
 
     }
 
+
+    public static void verifyStartsWith(String checkInsideThis, String checkThis){
+        if (checkInsideThis.startsWith(checkThis)){
+            System.out.println("PASS");
+        }else{
+            System.out.println("FAIL");
+            System.out.println("checkThis = " + checkThis);
+            System.out.println("checkInsideThis = " + checkInsideThis);
+        }
+
+    }
+
 }

@@ -21,6 +21,7 @@ public class GoogleResultsTitle {
             WebElement firstRsult = LocatorFactory.locateElement(driver,"xpath","//div/a/h3");
             Thread.sleep(3000);
             firstRsult.click();
+            System.out.println("6. Verify that url is equal to the value from step 4");
             StringUtility.verifyEquals(driver.getCurrentUrl(),url);
             Thread.sleep(3000);
             driver.navigate().back();

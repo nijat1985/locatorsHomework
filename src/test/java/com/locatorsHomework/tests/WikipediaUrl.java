@@ -11,6 +11,7 @@ public class WikipediaUrl {
         WebDriver driver = BrowserFactory.getDriver("chrome");
         driver.get("https://www.wikipedia.org/");
         String searchTerm = "selenium webdriver";
+        String expectedEndsWith = "Selenium_(software)";
 
         WebElement searchField = LocatorFactory.locateElement(driver,"id","searchInput");
         searchField.sendKeys(searchTerm);
@@ -21,7 +22,8 @@ public class WikipediaUrl {
         WebElement seleniumSoftwareLink = LocatorFactory.locateElement(driver,"xpath","//a[@href=\"/wiki/Selenium_(software)\"]");
         seleniumSoftwareLink.click();
 
-        StringUtility.verifyEndsWith(driver.getCurrentUrl(),searchTerm);
+        System.out.println("5. verify url ends with Selenium_(software)");
+        StringUtility.verifyEndsWith(driver.getCurrentUrl(),expectedEndsWith);
 
         driver.quit();
     }

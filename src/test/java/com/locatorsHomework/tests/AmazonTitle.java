@@ -17,6 +17,7 @@ public class AmazonTitle {
         WebElement searchButton = LocatorFactory.locateElement(driver,"xpath", "//input[@type='submit' and @class='nav-input']");
         searchButton.click();
 
+        System.out.println("4. verify page title contains the search term");
         StringUtility.verifyContains(driver.getTitle(), searchItem);
 
         driver.quit();
