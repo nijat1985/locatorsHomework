@@ -1,15 +1,32 @@
-package com.locatorsHomework.tests;
+package com.locatorsHomework.tests.same_test_with_testNG;
 
-import java.util.*;
 import com.locatorsHomework.utilities.BrowserFactory;
 import com.locatorsHomework.utilities.LocatorFactory;
-import com.locatorsHomework.utilities.StringUtility;
-import org.openqa.selenium.*;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
-public class VytrackTitleTest {
-    public static void main(String[] args) throws InterruptedException {
-        WebDriver driver = BrowserFactory.getDriver("chrome");
+import java.util.List;
+
+public class VytrackTitleTestWithTestNG {
+    WebDriver driver;
+
+    @BeforeMethod
+    public void openBrowser(){
+        driver = BrowserFactory.getDriver("chrome");
         driver.manage().window().maximize();
+    }
+
+    @AfterMethod
+    public void closeBrowser(){
+        driver.quit();
+    }
+
+    @Test
+    public void checkTitle() throws InterruptedException {
         driver.get("https://app.vytrack.com/user/login");
 
         LocatorFactory.locateElement(driver,"css","#prependedInput").sendKeys("storemanager52");
@@ -32,14 +49,6 @@ public class VytrackTitleTest {
         Thread.sleep(2000);
         String title = driver.getTitle();
         System.out.println("6. Verify that page title starts with the same name on top right");
-        StringUtility.verifyStartsWith(title,text);
-
-
-
-
-
-
-        Thread.sleep(2000);
-        driver.quit();
+        Assert.assertTrue(title.startsWith(text));
     }
 }
